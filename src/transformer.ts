@@ -369,11 +369,11 @@ export default class Transformer {
           return `import { ${this.resolveModelQuerySchemaName(
             modelName!,
             queryName!,
-          )} } from '../${queryName}${modelName}.schema'`;
+          )} } from '../${queryName}${modelName}.schema.js'`;
         } else if (Transformer.enumNames.includes(name)) {
-          return `import { ${name}Schema } from '../enums/${name}.schema'`;
+          return `import { ${name}Schema } from '../enums/${name}.schema.js'`;
         } else {
-          return `import { ${name}ObjectSchema } from './${name}.schema'`;
+          return `import { ${name}ObjectSchema } from './${name}.schema.js'`;
         }
       })
       .join(';\r\n');
@@ -476,7 +476,7 @@ export default class Transformer {
         const imports = [
           selectImport,
           includeImport,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${findUnique}.schema.ts`),
@@ -494,9 +494,9 @@ export default class Transformer {
           selectImport,
           includeImport,
           orderByImport,
-          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema'`,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
-          `import { ${modelName}ScalarFieldEnumSchema } from './enums/${modelName}ScalarFieldEnum.schema'`,
+          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema.js'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
+          `import { ${modelName}ScalarFieldEnumSchema } from './enums/${modelName}ScalarFieldEnum.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${findFirst}.schema.ts`),
@@ -514,9 +514,9 @@ export default class Transformer {
           selectImport,
           includeImport,
           orderByImport,
-          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema'`,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
-          `import { ${modelName}ScalarFieldEnumSchema } from './enums/${modelName}ScalarFieldEnum.schema'`,
+          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema.js'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
+          `import { ${modelName}ScalarFieldEnumSchema } from './enums/${modelName}ScalarFieldEnum.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${findMany}.schema.ts`),
@@ -533,8 +533,8 @@ export default class Transformer {
         const imports = [
           selectImport,
           includeImport,
-          `import { ${modelName}CreateInputObjectSchema } from './objects/${modelName}CreateInput.schema'`,
-          `import { ${modelName}UncheckedCreateInputObjectSchema } from './objects/${modelName}UncheckedCreateInput.schema'`,
+          `import { ${modelName}CreateInputObjectSchema } from './objects/${modelName}CreateInput.schema.js'`,
+          `import { ${modelName}UncheckedCreateInputObjectSchema } from './objects/${modelName}UncheckedCreateInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${createOne}.schema.ts`),
@@ -549,7 +549,7 @@ export default class Transformer {
 
       if (createMany) {
         const imports = [
-          `import { ${modelName}CreateManyInputObjectSchema } from './objects/${modelName}CreateManyInput.schema'`,
+          `import { ${modelName}CreateManyInputObjectSchema } from './objects/${modelName}CreateManyInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${createMany}.schema.ts`),
@@ -571,7 +571,7 @@ export default class Transformer {
         const imports = [
           selectImport,
           includeImport,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${deleteOne}.schema.ts`),
@@ -586,7 +586,7 @@ export default class Transformer {
 
       if (deleteMany) {
         const imports = [
-          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema'`,
+          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${deleteMany}.schema.ts`),
@@ -603,9 +603,9 @@ export default class Transformer {
         const imports = [
           selectImport,
           includeImport,
-          `import { ${modelName}UpdateInputObjectSchema } from './objects/${modelName}UpdateInput.schema'`,
-          `import { ${modelName}UncheckedUpdateInputObjectSchema } from './objects/${modelName}UncheckedUpdateInput.schema'`,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
+          `import { ${modelName}UpdateInputObjectSchema } from './objects/${modelName}UpdateInput.schema.js'`,
+          `import { ${modelName}UncheckedUpdateInputObjectSchema } from './objects/${modelName}UncheckedUpdateInput.schema.js'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${updateOne}.schema.ts`),
@@ -620,8 +620,8 @@ export default class Transformer {
 
       if (updateMany) {
         const imports = [
-          `import { ${modelName}UpdateManyMutationInputObjectSchema } from './objects/${modelName}UpdateManyMutationInput.schema'`,
-          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema'`,
+          `import { ${modelName}UpdateManyMutationInputObjectSchema } from './objects/${modelName}UpdateManyMutationInput.schema.js'`,
+          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${updateMany}.schema.ts`),
@@ -638,11 +638,11 @@ export default class Transformer {
         const imports = [
           selectImport,
           includeImport,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
-          `import { ${modelName}CreateInputObjectSchema } from './objects/${modelName}CreateInput.schema'`,
-          `import { ${modelName}UncheckedCreateInputObjectSchema } from './objects/${modelName}UncheckedCreateInput.schema'`,
-          `import { ${modelName}UpdateInputObjectSchema } from './objects/${modelName}UpdateInput.schema'`,
-          `import { ${modelName}UncheckedUpdateInputObjectSchema } from './objects/${modelName}UncheckedUpdateInput.schema'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
+          `import { ${modelName}CreateInputObjectSchema } from './objects/${modelName}CreateInput.schema.js'`,
+          `import { ${modelName}UncheckedCreateInputObjectSchema } from './objects/${modelName}UncheckedCreateInput.schema.js'`,
+          `import { ${modelName}UpdateInputObjectSchema } from './objects/${modelName}UpdateInput.schema.js'`,
+          `import { ${modelName}UncheckedUpdateInputObjectSchema } from './objects/${modelName}UncheckedUpdateInput.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${upsertOne}.schema.ts`),
@@ -658,13 +658,13 @@ export default class Transformer {
       if (aggregate) {
         const imports = [
           orderByImport,
-          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema'`,
-          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema'`,
+          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema.js'`,
+          `import { ${modelName}WhereUniqueInputObjectSchema } from './objects/${modelName}WhereUniqueInput.schema.js'`,
         ];
         const aggregateOperations = [];
         if (this.aggregateOperationSupport[modelName].count) {
           imports.push(
-            `import { ${modelName}CountAggregateInputObjectSchema } from './objects/${modelName}CountAggregateInput.schema'`,
+            `import { ${modelName}CountAggregateInputObjectSchema } from './objects/${modelName}CountAggregateInput.schema.js'`,
           );
           aggregateOperations.push(
             `_count: z.union([ z.literal(true), ${modelName}CountAggregateInputObjectSchema ]).optional()`,
@@ -672,7 +672,7 @@ export default class Transformer {
         }
         if (this.aggregateOperationSupport[modelName].min) {
           imports.push(
-            `import { ${modelName}MinAggregateInputObjectSchema } from './objects/${modelName}MinAggregateInput.schema'`,
+            `import { ${modelName}MinAggregateInputObjectSchema } from './objects/${modelName}MinAggregateInput.schema.js'`,
           );
           aggregateOperations.push(
             `_min: ${modelName}MinAggregateInputObjectSchema.optional()`,
@@ -680,7 +680,7 @@ export default class Transformer {
         }
         if (this.aggregateOperationSupport[modelName].max) {
           imports.push(
-            `import { ${modelName}MaxAggregateInputObjectSchema } from './objects/${modelName}MaxAggregateInput.schema'`,
+            `import { ${modelName}MaxAggregateInputObjectSchema } from './objects/${modelName}MaxAggregateInput.schema.js'`,
           );
           aggregateOperations.push(
             `_max: ${modelName}MaxAggregateInputObjectSchema.optional()`,
@@ -688,7 +688,7 @@ export default class Transformer {
         }
         if (this.aggregateOperationSupport[modelName].avg) {
           imports.push(
-            `import { ${modelName}AvgAggregateInputObjectSchema } from './objects/${modelName}AvgAggregateInput.schema'`,
+            `import { ${modelName}AvgAggregateInputObjectSchema } from './objects/${modelName}AvgAggregateInput.schema.js'`,
           );
           aggregateOperations.push(
             `_avg: ${modelName}AvgAggregateInputObjectSchema.optional()`,
@@ -696,7 +696,7 @@ export default class Transformer {
         }
         if (this.aggregateOperationSupport[modelName].sum) {
           imports.push(
-            `import { ${modelName}SumAggregateInputObjectSchema } from './objects/${modelName}SumAggregateInput.schema'`,
+            `import { ${modelName}SumAggregateInputObjectSchema } from './objects/${modelName}SumAggregateInput.schema.js'`,
           );
           aggregateOperations.push(
             `_sum: ${modelName}SumAggregateInputObjectSchema.optional()`,
@@ -718,10 +718,10 @@ export default class Transformer {
 
       if (groupBy) {
         const imports = [
-          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema'`,
-          `import { ${modelName}OrderByWithAggregationInputObjectSchema } from './objects/${modelName}OrderByWithAggregationInput.schema'`,
-          `import { ${modelName}ScalarWhereWithAggregatesInputObjectSchema } from './objects/${modelName}ScalarWhereWithAggregatesInput.schema'`,
-          `import { ${modelName}ScalarFieldEnumSchema } from './enums/${modelName}ScalarFieldEnum.schema'`,
+          `import { ${modelName}WhereInputObjectSchema } from './objects/${modelName}WhereInput.schema.js'`,
+          `import { ${modelName}OrderByWithAggregationInputObjectSchema } from './objects/${modelName}OrderByWithAggregationInput.schema.js'`,
+          `import { ${modelName}ScalarWhereWithAggregatesInputObjectSchema } from './objects/${modelName}ScalarWhereWithAggregatesInput.schema.js'`,
+          `import { ${modelName}ScalarFieldEnumSchema } from './enums/${modelName}ScalarFieldEnum.schema.js'`,
         ];
         await writeFileSafely(
           path.join(Transformer.outputPath, `schemas/${groupBy}.schema.ts`),
@@ -750,12 +750,12 @@ export default class Transformer {
     const hasRelationToAnotherModel = checkModelHasModelRelation(model);
 
     const selectImport = Transformer.isGenerateSelect
-      ? `import { ${modelName}SelectObjectSchema } from './objects/${modelName}Select.schema'`
+      ? `import { ${modelName}SelectObjectSchema } from './objects/${modelName}Select.schema.js'`
       : '';
 
     const includeImport =
       Transformer.isGenerateInclude && hasRelationToAnotherModel
-        ? `import { ${modelName}IncludeObjectSchema } from './objects/${modelName}Include.schema'`
+        ? `import { ${modelName}IncludeObjectSchema } from './objects/${modelName}Include.schema.js'`
         : '';
 
     let selectZodSchemaLine = '';
@@ -798,7 +798,7 @@ export default class Transformer {
       modelOrderBy = `${modelName}OrderByWithRelationInput`;
     }
 
-    const orderByImport = `import { ${modelOrderBy}ObjectSchema } from './objects/${modelOrderBy}.schema'`;
+    const orderByImport = `import { ${modelOrderBy}ObjectSchema } from './objects/${modelOrderBy}.schema.js'`;
     const orderByZodSchemaLine = `orderBy: z.union([${modelOrderBy}ObjectSchema, ${modelOrderBy}ObjectSchema.array()]).optional(),`;
 
     return { orderByImport, orderByZodSchemaLine };
